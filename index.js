@@ -116,7 +116,7 @@ function getLearnerData(course, ag, submissions) {
       let finalScore = submission.submission.score;
       
       if (isSubmissionLate(submission, assignment)) {
-        console.log(`    ⚠️  LATE SUBMISSION DETECTED - Applying 10% penalty`);
+        console.log(`   LATE SUBMISSION DETECTED - Applying 10% penalty`);
         const penalty = assignment.points_possible * 0.10;
         console.log(`      Original score: ${finalScore}, Penalty: ${penalty}`);
         finalScore = Math.max(0, finalScore - penalty);
@@ -170,7 +170,7 @@ function getLearnerData(course, ag, submissions) {
         const assignment = findAssignment(submission.assignment_id);
         
         if (!assignment) {
-          console.log(`  ❌ Assignment ${submission.assignment_id} not found in assignment group - SKIPPING`);
+          console.log(`  Assignment ${submission.assignment_id} not found in assignment group - SKIPPING`);
           continue;
         }
         
@@ -182,13 +182,13 @@ function getLearnerData(course, ag, submissions) {
         
         // Check if assignment is due
         if (!isAssignmentDue(assignment)) {
-          console.log(`  ⏭️  Assignment due date is in the future (${assignment.due_at}) - SKIPPING`);
+          console.log(`  Assignment due date is in the future (${assignment.due_at}) - SKIPPING`);
           continue;
         }
         
         // Check for valid points_possible
         if (!assignment.points_possible || assignment.points_possible <= 0) {
-          console.log(`  ⚠️  Assignment has invalid points_possible (${assignment.points_possible}) - SKIPPING`);
+          console.log(` Assignment has invalid points_possible (${assignment.points_possible}) - SKIPPING`);
           continue;
         }
         
@@ -225,7 +225,7 @@ function getLearnerData(course, ag, submissions) {
         result.avg = parseFloat(average.toFixed(3));
         console.log(`  Overall average: ${(average * 100).toFixed(1)}% (${result.avg})`);
       } else {
-        console.log(`  ⚠️  No valid assignments found for this learner`);
+        console.log(`  No valid assignments found for this learner`);
       }
       
       results.push(result);
@@ -258,7 +258,7 @@ function getLearnerData(course, ag, submissions) {
    
     
   } catch (error) {
-    console.error("\n❌ ERROR PROCESSING DATA:");
+    console.error("\n ERROR PROCESSING DATA:");
     console.error(error.message);
     throw error;
   }
