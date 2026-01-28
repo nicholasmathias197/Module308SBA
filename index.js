@@ -178,3 +178,23 @@ try {
 } catch (error) {
   console.error("Error:", error.message);
 }
+// Test 1: Basic functionality test
+console.log("=== TEST 1: Basic Functionality ===");
+const testResult = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
+console.log("✓ Test 1 completed - function ran without errors");
+
+// Test 2: Course validation test
+console.log("\n=== TEST 2: Course Validation ===");
+try {
+  const invalidAssignmentGroup = {
+    ...AssignmentGroup,
+    course_id: 999 // Different course ID
+  };
+  getLearnerData(CourseInfo, invalidAssignmentGroup, LearnerSubmissions);
+  console.log(" Test 2 failed - should have thrown an error");
+} catch (error) {
+  console.log("Test 2 passed - correctly threw error:", error.message);
+}
+
+
+  
